@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bohooshApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>App</title>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .table-striped > tbody > tr.active td {
+        background-color: blue;
+        color: white;
+      }
+    </style>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/app.js"></script>
+    <script src="/services/members.js"></script>
+    <script src="/controllers/list.js"></script>
+    <script src="/controllers/detail.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>UX Society</h1>
+      <div class="row">
+        <div ng-controller="ListController" class="col-sm-8 col-md-8">
+          <form class="form-group">
+            <input type="text" ng-model="query">
+          </form>
+          <hr />
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Occupation</th>
+                <th>Company</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr 
+                ng-repeat="item in list | filter:query" 
+                ng-click="selectItem(item)" 
+                ng-class="item.selected ? 'active' : ''">
+                <td>
+                  {{ item.firstName }}
+                </td>
+                <td>
+                  {{ item.occupation }}
+                </td>
+                <td>
+                  {{ item.company }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div ng-controller="DetailController" class="col-sm-4 col-md-4">
+          <p>{{ selectedItem.firstName }}</p>
+          <img ng-src="{{selectedItem.portrait}}" class="img-responsive" />
+          <p>{{ selectedItem.occupation }}</p>
+          <p>{{ selectedItem.company }}</p>
+          <p>{{ selectedItem.motto }}</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

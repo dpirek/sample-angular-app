@@ -1,0 +1,12 @@
+{
+  "name": "Angular Sample APP",
+  "description": "Angular Sample APP",
+  "version": "0.1.0",
+	"private": true,
+  "devDependencies": {
+    "request": "~4.12.0"
+  },
+  "main": "server.js",
+  "author": "David Pirek",
+  "license": "none"
+}

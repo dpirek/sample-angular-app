@@ -1,0 +1,1 @@
+This is a sample angular app with a list/detail controllers.
